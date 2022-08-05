@@ -14,3 +14,34 @@
 .searchbar {
     margin: 0 200px;
 }
+input::placeholder {
+    font-size: 14px;
+}
+.searchbtn {
+    border-left: none;
+    border: none;
+}
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #d3d3d3
+}
+.card {
+    height: 200px;
+    width: 200px;
+}
+.searchformchris {
+    border : none; 
+}
+.card-body {
+    height: 70%;
+}
+.fa-search {
+    font-size: 20px;
+}
+
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #d3d3d3
+}
+
+.form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #d3d3d3
+}
