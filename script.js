@@ -47,7 +47,7 @@ let createCard = (recipe) => { // permet de créer les cards à afficher sur la 
 	let method = create("p", {class: "description w-50"});
 	method.textContent = recipe[1].description;
 
-	//appliance section
+	//section méthode de cuisson 
 	let appliances = create("p", {class: "sr-only appliance"});
 	appliances.textContent = recipe[1].appliance;
 	//section ustensiles
@@ -80,3 +80,17 @@ let createCard = (recipe) => { // permet de créer les cards à afficher sur la 
 }
 
 recipesArray.forEach(recipe => createCard(recipe));
+
+let quickSort = (array, left, right) => {
+	let index;
+	if (array.length > 1) {
+		index = partition(array, left, right); //take index from partition
+		if (left<index-1) { //more elements on the left
+			quickSort(array, left, index-1);
+		}
+		if (index<right) { //more elements on the right
+			quickSort(array, index, right);
+		}
+	}
+	return array;
+}
