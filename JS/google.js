@@ -10,51 +10,45 @@ export let theMillTurns = (recipes, filter) => {
   //   console.log(recipes, filter);
   let googledCards = [];
 
-  for (let recipe of recipes) {
+  recipes.map((recipe) => {
     // console.log(recipe);
     if (
       // une recette ?
-      recipe.name.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) >
-        -1 ||
+      recipe.name.toLowerCase().trim().includes(filter.toLowerCase().trim()) ||
       recipe.description
         .toLowerCase()
         .trim()
-        .indexOf(filter.toLowerCase().trim()) > -1 ||
+        .includes(filter.toLowerCase().trim()) ||
       // un appareil ?
       recipe.appliance
         .toLowerCase()
         .trim()
-        .indexOf(filter.toLowerCase().trim()) > -1
+        .includes(filter.toLowerCase().trim())
     ) {
       googledCards.push(recipe);
       //   console.log(cards);
-      continue;
     }
     // un ustensil ?
-    for (let ustensil of recipe.ustensils) {
-      if (
-        ustensil.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) > -1
-      ) {
+    recipe.ustensils.map((ustensil) => {
+      if (ustensil.toLowerCase().trim().includes(filter.toLowerCase().trim())) {
         googledCards.push(recipe);
-        break;
       }
-    }
+    });
 
     // un ingredient ?
-    for (let ingredient of recipe.ingredients) {
+    recipe.ingredients.map((ingredient) => {
       if (
         ingredient.ingredient
           .toLowerCase()
           .trim()
-          .indexOf(filter.toLowerCase().trim()) > -1
+          .includes(filter.toLowerCase().trim())
       ) {
         googledCards.push(recipe);
-        break;
       }
-    }
-  }
+    });
+  });
   //   console.log(cards);
-  return  googledCards;
+  return googledCards;
 };
 
 // LISTEN INPUT BARRE DE RECHERCHE
